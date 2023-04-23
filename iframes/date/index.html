@@ -1,0 +1,13 @@
+<span id="thismonth"></span> <span id="thisday"></span><sup id="thisordinal"></sup>
+<script>
+const suffix = {
+  one: 'st',
+  two: 'nd',
+  few: 'rd',
+  other: 'th',
+};
+
+document.getElementById("thismonth").innerHTML = new Intl.DateTimeFormat('en-GB', { month: 'long' }).format(new Date(Date.now()));
+document.getElementById("thisday").innerHTML = new Intl.DateTimeFormat('en-GB', { day: 'numeric' }).format(new Date(Date.now()));
+document.getElementById("thisordinal").innerHTML = suffix[new Intl.PluralRules('en-GB', { type: 'ordinal' }).select(new Date(Date.now()).getDate())];
+</script>
